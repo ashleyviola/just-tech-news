@@ -5,7 +5,11 @@ const { retry } = require('statuses');
 
 
 // create our User model 
-class User extends Model {}
+class User extends Model {
+    checkPassword(loginPw){
+        return bcrypt.compareSync(loginPw, this.password);
+    }
+}
 
 // define tabel columns and configuration 
 User.init(
